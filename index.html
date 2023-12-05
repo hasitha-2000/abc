@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Editor - [ CT/2019/069 ]</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="css/style.css">
+  
+</head>
+<body>
+
+<div class="navbar navbar-expand">
+    <nav>
+
+        <div class="button-group">
+
+            <button id="bold" type="button" onclick="boldText()">
+            <img src="Resources/bold-xxl.png">
+            </button>
+            <button id="underline" type="button" onclick="underline()">
+            <img src="Resources/format_underline_white_192x192.png">
+            </button>
+            <button id="italic" type="button" onclick="italic()"> 
+                <img src="Resources/italic-xxl.png">
+            </button>
+            <button id="left" type="button" onclick="left()">
+                <img src="Resources/left.png">
+            </button>
+            <button id="center" type="button" onclick="center()">
+                <img src="Resources/center.png">
+            </button>
+            <button id="right" type="button" onclick="right()">
+                <img src="Resources/right.png">
+            </button>
+            <button id="justify" type="button" onclick="justify()">
+                <img src="Resources/justify.png">
+            </button>
+            <button id="undo" type="button" onclick="undo()">
+                <img src="Resources/undo-4-32.png">
+            </button>
+            <button id="redo" type="button" onclick="redo()">
+                <img src="Resources/action-redo-32.png">
+            </button>
+            <div class="color">
+                <span>Color</span>
+                <input type="color" oninput="color(this.value); this.value='#000000';">
+            </div>
+            
+        </div>
+    </nav>
+</div>
+
+<div class="content" contenteditable="true" spellcheck="false"></div>
+
+<script>
+    const content = document.getElementById('content');
+
+    content.addEventListener('mouseenter', function () {
+	    const a = content.querySelectorAll('a');
+	    a.forEach(item=> {
+		    item.addEventListener('mouseenter', function () {
+			content.setAttribute('contenteditable', false);
+			item.target = '_blank';
+		    })
+		    item.addEventListener('mouseleave', function () {
+			content.setAttribute('contenteditable', true);
+		    })
+	    })
+    })
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+<script src="js/bold.js"></script>
+<script src="js/underline.js"></script>
+<script src="js/italic.js"></script>
+<script src="js/text_alignment.js"></script>
+<script src="js/undo_redo.js"></script>
+<script src="js/color.js"></script>
+
+</body>
+<!-- Author: [ K.A.H.N JAYAWARDANA ] | [ CT/2019/069 ] -->
+</html>
